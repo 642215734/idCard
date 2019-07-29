@@ -12,12 +12,12 @@ import time
 import numpy as np
 from PIL import Image
 
-path = './data/1.png'
+path = './data/7.png'
 
 d2l.set_figsize()
 img = image.imread(path)
 
-th = 90
+th = 120
 d2l.plt.imshow(img.asnumpy())
 
 

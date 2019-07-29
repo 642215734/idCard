@@ -77,6 +77,12 @@ plt.legend()
 
 plt.show()
 
-lena = mpimg.imread('./small/test/dogs/14.png')
+lena = mpimg.imread('./data/train/0.png')
+lena=cv2.resize(lena,(150,150))
+print(model.predict(np.asarray([lena])))
+lena = mpimg.imread('./data/train/1.png')
+lena=cv2.resize(lena,(150,150))
+print(model.predict(np.asarray([lena])))
+lena = mpimg.imread('./data/train/2.png')
 lena=cv2.resize(lena,(150,150))
 print(model.predict(np.asarray([lena])))

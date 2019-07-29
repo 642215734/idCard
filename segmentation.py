@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 
 '''
+倾斜矫正
 投影分割，行->列->行
 
 '''
@@ -78,4 +79,4 @@ def segment(path='./5.png', root='./', number=0, dsize=100):
 
 
 if __name__ == '__main__':
-    segment('./1.png', './data/train',14)
+    segment('./7.png', './data/train',17)

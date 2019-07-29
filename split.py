@@ -53,19 +53,19 @@ for fname in fnames:
     dat = os.path.join(test_cats_dir, fname)
     shutil.copyfile(src, dat)
 
-fnames = ['{}.png'.format(i) for i in range(14,17)]
+fnames = ['{}.png'.format(i) for i in range(14,20)]
 for fname in fnames:
     src = os.path.join(original_dataset_dir, fname)
     dat = os.path.join(train_dogs_dir, fname)
     shutil.copyfile(src, dat)
 
-fnames = ['{}.png'.format(i) for i in range(14, 17)]
+fnames = ['{}.png'.format(i) for i in range(14, 20)]
 for fname in fnames:
     src = os.path.join(original_dataset_dir, fname)
     dat = os.path.join(validation_dogs_dir, fname)
     shutil.copyfile(src, dat)
 
-fnames = ['{}.png'.format(i) for i in range(14, 17)]
+fnames = ['{}.png'.format(i) for i in range(14, 20)]
 for fname in fnames:
     src = os.path.join(original_dataset_dir, fname)
     dat = os.path.join(test_dogs_dir, fname)
