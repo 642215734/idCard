@@ -162,12 +162,13 @@ def exif_api(filename):
         try:
             # logger.info('%s (%s): %s', i, FIELD_TYPES[data[i].field_type][2], data[i].printable)
             if 'Adobe' in data[i].printable or 'Meitu' in data[i].printable:
-                logger.info('this is ps photo!!!')
+                print('exif shows this picture has been photoshopped ')
                 return False
             else:
                 continue
         except IndexError:
             logger.error("%s : %s", i, str(data[i]))
+    print('exif shows this picture has not been photoshopped ')
     return True
 
 

@@ -6,9 +6,11 @@ import numpy as np
 投影分割，行->列->行
 
 '''
-def segment(path='./in.png', root='./', number=0, dsize=100):
+
+
+def segment_api(path='./in.png', root='./', number=0, dsize=100, min_val_word=20):
     # dsize归一化处理的图像大小
-    stop=number+3
+    stop = number + 3
     img = cv2.imread(path)
     data = np.array(img)
     len_x = data.shape[0]
@@ -31,12 +33,12 @@ def segment(path='./in.png', root='./', number=0, dsize=100):
                 rowPairs.append((start_i, end_i))
             start_i, end_i = -1, -1
 
-    print(rowPairs)
+    # print(rowPairs)
 
     # 列分割
     start_j = -1
     end_j = -1
-    min_val_word = 10  # 最小文字像素长度
+    # 最小文字像素长度
     # 分割后保存编号
     for start, end in rowPairs:
         for j in range(len_y):
@@ -48,6 +50,7 @@ def segment(path='./in.png', root='./', number=0, dsize=100):
                 if (end_j - start_j >= min_val_word):
                     # print(end_j - start_j)
                     tmp = data[start:end, start_j: end_j]
+                    # print(start, end, start_j, end_j)
 
                     # cv2.imshow('demo', tmp)
                     # cv2.waitKey(0)
@@ -66,8 +69,8 @@ def segment(path='./in.png', root='./', number=0, dsize=100):
                     #             pass
 
                     # tmp = tmp[start_i:end_i, :]
-                    cv2.imshow('demo', tmp)
-                    cv2.waitKey(0)
+                    # cv2.imshow('demo', tmp)
+                    # cv2.waitKey(0)
 
                     im2save = cv2.resize(tmp, (dsize, dsize))  # 归一化处理
                     cv2.imwrite(root + '/%d.png' % number, im2save)
@@ -80,4 +83,4 @@ def segment(path='./in.png', root='./', number=0, dsize=100):
 
 
 if __name__ == '__main__':
-    segment('./in.png', './data/train',20)
+    segment_api('./7.png', './data/train', 20)

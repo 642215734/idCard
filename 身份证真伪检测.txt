@@ -5,3 +5,5 @@
  模块三：EXIF信息检测   exif_api adobe、美图秀秀
 3.假身份证照片怎么来text-renderer
 4.投影分割,先水平切割在对每个字垂直切割
+5.语义分割得到ps区域
+6.关键问题：二值化的threshold
