@@ -34,3 +34,5 @@ if __name__ == '__main__':
         rotate_img = incline_api(filename='./data/demo_pre.png', savepath='./data/demo_rota.png')
         segment_api('./data/demo_rota.png', CHAR_FALSE, number=count, min_val_word=14)
         count += 3
+
+    train()

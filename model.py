@@ -30,13 +30,20 @@ def train(train_dir=r'./small/train', validation_dir=r'./small/validation'):
     model.compile(loss='binary_crossentropy', optimizer=optimizers.RMSprop(lr=1e-4), metrics=['acc'])
 
     # 调整像素值
-    train_datagen = ImageDataGenerator(rescale=1. / 255, )
+    train_datagen = ImageDataGenerator(rescale=1. / 255, width_shift_range=0.2,
+                                       height_shift_range=0.2,
+                                       shear_range=0.2,
+                                       zoom_range=0.2,
+                                       horizontal_flip=True,
+                                       fill_mode='nearest'
+                                       )
     test_datagen = ImageDataGenerator(rescale=1. / 255)
 
     train_generator = train_datagen.flow_from_directory(
+
         directory=train_dir,
         target_size=(150, 150),
-        batch_size=1,
+        batch_size=5,
         class_mode='binary')
 
     validation_generator = test_datagen.flow_from_directory(

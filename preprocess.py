@@ -11,9 +11,11 @@ import sys
 import time
 import numpy as np
 from PIL import Image
+import cv2
+from matplotlib import pyplot as plt
 
 
-def prepro_api(path='./data/demo.png', dest=''):
+def prepro_api(path='./data/raw_true/2.png', dest='./data/demo_pre.png'):
     # d2l.set_figsize()
     # img = image.imread(path)
 
@@ -35,6 +37,21 @@ def prepro_api(path='./data/demo.png', dest=''):
     #     brightness=0.5, contrast=0.5, saturation=0.5, hue=0.5)
     # apply(img, color_aug)
     # d2l.plt.show()
+    # img = cv2.imread(path, 0)
+    # img = cv2.medianBlur(img, 5)
+    # ret, th1 = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
+    # th2 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_MEAN_C, \
+    #                             cv2.THRESH_BINARY, 31, 2)
+    # th3 = cv2.adaptiveThreshold(img, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, \
+    #                             cv2.THRESH_BINARY, 31, 2)
+    # titles = ['Original Image', 'Global Thresholding (v = 127)',
+    #           'Adaptive Mean Thresholding', 'Adaptive Gaussian Thresholding']
+    # images = [img, th1, th2, th3]
+    # for i in range(4):
+    #     plt.subplot(2, 2, i + 1), plt.imshow(images[i], 'gray')
+    #     plt.title(titles[i])
+    #     plt.xticks([]), plt.yticks([])
+    # plt.show()
 
     img = Image.open(path)
     img = img.convert("L")
@@ -45,3 +62,7 @@ def prepro_api(path='./data/demo.png', dest=''):
     img = img.point(lambda x: WHITE if x > th else BLACK)
     img = img.convert('1')
     img.save(dest)
+
+
+if __name__ == '__main__':
+    prepro_api()
